@@ -15,3 +15,7 @@ export async function createSinglePlayerSession(
 export async function createRound(sessionId: string) {
     return await singlePlayerSessionRepo.createRound(sessionId);
 }
+
+export async function updateLastRoundScore(sessionId: string, score: number) {
+    return await singlePlayerSessionRepo.updateLastRoundScore(sessionId, score);
+}

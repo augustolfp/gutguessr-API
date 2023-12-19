@@ -4,6 +4,7 @@ export interface RoundInterface {
     heading: number;
     pitch: number;
     score: number | null;
+    creationTimestamp: number;
 }
 
 export interface SinglePlayerSessionInterface {

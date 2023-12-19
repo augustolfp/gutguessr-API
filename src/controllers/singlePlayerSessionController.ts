@@ -20,3 +20,15 @@ export async function createRound(req: Request, res: Response) {
 
     return res.status(201).send(result);
 }
+
+export async function updateLastRoundScore(req: Request, res: Response) {
+    const sessionId: string = req.body.sessionId;
+    const score: number = req.body.score;
+
+    const result = await singlePlayerSessionServices.updateLastRoundScore(
+        sessionId,
+        score
+    );
+
+    return res.status(201).send(result);
+}

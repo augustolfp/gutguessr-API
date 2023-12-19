@@ -14,8 +14,9 @@ const RoundSchema: Schema = new Schema(
         heading: Number,
         pitch: Number,
         score: { type: Number, default: null },
+        creationTimestamp: Number,
     },
-    { timestamps: true, versionKey: false }
+    { timestamps: false, versionKey: false }
 );
 
 export const SinglePlayerSessionSchema: Schema = new Schema(

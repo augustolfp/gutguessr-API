@@ -13,4 +13,9 @@ singlePlayerSessionRouter.post(
     singlePlayerSessionController.createRound
 );
 
+singlePlayerSessionRouter.post(
+    "/single-player-session/score",
+    singlePlayerSessionController.updateLastRoundScore
+);
+
 export default singlePlayerSessionRouter;
