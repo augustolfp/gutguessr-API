@@ -36,6 +36,7 @@ export async function createRound(sessionId: string) {
     session.rounds.push({
         ...randomSeed,
         score: null,
+        isScoreSubmitLate: false,
         creationTimestamp: Date.now(),
     });
 
@@ -66,6 +67,7 @@ export async function updateLastRoundScore(sessionId: string, score: number) {
     const finalScore = isLate ? 0 : score;
 
     lastRound.score = finalScore;
+    lastRound.isScoreSubmitLate = isLate;
 
     return await session.save();
 }

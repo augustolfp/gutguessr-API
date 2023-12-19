@@ -4,6 +4,7 @@ export interface RoundInterface {
     heading: number;
     pitch: number;
     score: number | null;
+    isScoreSubmitLate: boolean;
     creationTimestamp: number;
 }
 
