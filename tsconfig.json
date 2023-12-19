@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "target": "es6",
+        "module": "commonjs",
+        "lib": ["es6"],
+        "allowJs": true,
+        "outDir": "build",
+        "esModuleInterop": true,
+        "resolveJsonModule": true
+    }
+}
