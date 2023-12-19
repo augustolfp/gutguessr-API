@@ -14,7 +14,6 @@ const RoundSchema: Schema = new Schema(
         heading: Number,
         pitch: Number,
         score: { type: Number, default: null },
-        sessionId: String,
     },
     { timestamps: true, versionKey: false }
 );

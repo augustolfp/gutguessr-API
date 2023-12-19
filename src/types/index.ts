@@ -4,7 +4,6 @@ export interface RoundInterface {
     heading: number;
     pitch: number;
     score: number | null;
-    sessionId: string;
 }
 
 export interface SinglePlayerSessionInterface {

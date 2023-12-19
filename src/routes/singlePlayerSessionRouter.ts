@@ -8,4 +8,9 @@ singlePlayerSessionRouter.post(
     singlePlayerSessionController.createSinglePlayerSession
 );
 
+singlePlayerSessionRouter.post(
+    "/single-player-session/round",
+    singlePlayerSessionController.createRound
+);
+
 export default singlePlayerSessionRouter;

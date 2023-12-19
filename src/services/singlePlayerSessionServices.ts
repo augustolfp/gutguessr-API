@@ -11,3 +11,7 @@ export async function createSinglePlayerSession(
 
     return newSession;
 }
+
+export async function createRound(sessionId: string) {
+    return await singlePlayerSessionRepo.createRound(sessionId);
+}
