@@ -23,11 +23,11 @@ export async function createRound(req: Request, res: Response) {
 
 export async function updateLastRoundScore(req: Request, res: Response) {
     const sessionId: string = req.body.sessionId;
-    const score: number = req.body.score;
+    const distance: number = req.body.distance;
 
     const result = await singlePlayerSessionServices.updateLastRoundScore(
         sessionId,
-        score
+        distance
     );
 
     return res.status(201).send(result);
