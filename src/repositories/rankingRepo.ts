@@ -1,12 +1,28 @@
 import { SinglePlayerSessionModelInterface } from "../mongoDB/schemas";
 import { RankingDoc } from "../mongoDB/config";
 
-export async function getRanking() {
+export async function getRanking(sessionId: string) {
     const ranking = await RankingDoc.find({});
 
-    return ranking.sort((a, b) => {
-        return b.averageScore - a.averageScore;
+    const sortedRanking = ranking
+        .sort((a, b) => {
+            return b.averageScore - a.averageScore;
+        })
+        .slice(0, 10);
+
+    const findCurrentSession = sortedRanking.find((rankingItem) => {
+        return rankingItem.sessionId === sessionId;
     });
+
+    if (findCurrentSession) {
+        return sortedRanking;
+    }
+
+    const getCurrentSession = await RankingDoc.findOne({
+        sessionId: sessionId,
+    });
+
+    return [...sortedRanking, getCurrentSession];
 }
 
 export async function updateRanking(
