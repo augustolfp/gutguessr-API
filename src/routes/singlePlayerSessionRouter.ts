@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { rateLimiter } from "../middlewares/rateLimitMW";
 import * as singlePlayerSessionController from "../controllers/singlePlayerSessionController";
 
 const singlePlayerSessionRouter = Router();
@@ -10,6 +11,7 @@ singlePlayerSessionRouter.post(
 
 singlePlayerSessionRouter.post(
     "/single-player-session/round",
+    rateLimiter,
     singlePlayerSessionController.createRound
 );
 
