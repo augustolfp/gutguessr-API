@@ -13,3 +13,11 @@ export interface SinglePlayerSessionInterface {
     numOfRounds: number;
     rounds: RoundInterface[];
 }
+
+export interface RankingInterface {
+    username: string;
+    sessionId: string;
+    creationTimestamp: number;
+    scores: number[];
+    averageScore: number;
+}

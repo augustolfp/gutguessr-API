@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import {
     SinglePlayerSessionSchema,
     SinglePlayerSessionModelInterface,
+    RankingSchema,
+    RankingModelInterface,
 } from "./schemas";
 
 dotenv.config();
@@ -16,3 +18,8 @@ export const SinglePlayerSessionDoc =
         "SinglePlayerSession",
         SinglePlayerSessionSchema
     );
+
+export const RankingDoc = mongoose.model<RankingModelInterface>(
+    "Ranking",
+    RankingSchema
+);
