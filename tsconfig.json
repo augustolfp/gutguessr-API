@@ -1,12 +1,67 @@
 {
     "compilerOptions": {
-        "sourceMap": true,
-        "target": "es6",
-        "module": "commonjs",
-        "lib": ["es6"],
-        "allowJs": true,
-        "outDir": "build",
+
+        // ----------------- OPÇÕES-BASE (START) -----------------
+        // As opções-base abaixo são válidas para praticamente toda situação: Código de Backend, Frontend, Biblioteca, etc
+
+        // esModuleInterop organiza a interoperação entre esm e cjs. Sempre mantenha "true"
         "esModuleInterop": true,
-        "resolveJsonModule": true
+
+        // skipLibCheck pula o type checking em declaration files. Se tiver "true" significa que ele não irá checar módulos, ou seja, não irá estourar erros de códigos que você não controla. Habilitar essa flag pode resolver muitos problemas ao ignorar erros irrelevantes em códigos, além de reduzir consideravelmente o tempo que o código demora para compilar. O ponto negativo é que pode dar uma diminuida na qualidade do código, por ignorar erros.
+        // A regra rápida é: se a build está rápida e sem erros, mantenha "false".
+        "skipLibCheck":true,
+
+        "target": "es2022",
+
+        // allowJs permite que você importe arquivos JS, o que pode ser útil.
+        "allowJs": true,
+
+        // resolveJsonModule permite que você importe arquivos JSON, o que pode ser útil.
+        "resolveJsonModule": true,
+
+        // moduleDetection: "force" faz com que todos os arquivos no repositório sejam tratados como módulos, ao invés de um "global script".
+        "moduleDetection": "force",
+
+        // isolatedModules: "true" evita algumas funções do TS que não são seguras quando tratamos módulos como arquivos isolados. O valor padrão é "false", e muitas pessoas mantém "false", não é um problema.
+        "isolatedModules": true,
+
+        // verbatimModuleSyntax: "true" força o usuário a utilizar "import type" e "export type", o que melhora a qualidade do código.
+        // Quando verbatimModuleSyntax: "true" e module: "NodeNext" ele também força a sintaxe de ESM ou CJS.
+        // "verbatimModuleSyntax": true,
+
+        // ----------------- OPÇÕES-BASE (END) -----------------
+
+
+
+        // ----------------- STRICTNESS (START) -----------------
+
+        // strict tem que ser true. É indispensável. As bibliotecas que utilizam Typescript basicamente assumem que o seu projeto é strict.
+        "strict": true,
+
+        // noUncheckedIndexedAccess é um extra bem bacana de se manter ativo, pois evita que você acesse um array ou objeto sem primeiro checar se este está definido. É uma ótima ferramenta para evitar runtime errors.
+        "noUncheckedIndexedAccess": true,
+
+        // ----------------- STRICTNESS (END) -----------------
+
+
+
+        // ----------------- OPÇÕES DE TRANSPILAÇÃO (START) -----------------
+        // As opções de transpilação abaixo foram escolhidas para um código que irá ser Transpilado e não irá rodar no DOM:
+
+        // module: "NodeNext" é a melhor opção para NodeJS. Ao declarar module: "NodeNext", automaticamente é setado moduleResolution: "NodeNext", que garante que o código que você produz poderá ser rodado no NodeJS.
+        "module": "NodeNext",
+        
+        // outDir: "dist" é o padrão. Você pode mudar, mas não precisa.
+        "outDir": "dist",
+        
+        // sourceMap: "true" pede para o TS emitir source maps. É útil para debugging, muito usado quando o seu código é uma Biblioteca. O padrão é "false" e está ótimo para Backend, mas vou manter "true" nesse projeto pois é recomendado pelo Prisma ORM.
+        "sourceMap": true,
+
+        // Se o Código não roda no DOM, utilize lib: ["es2022"]
+        "lib": ["es2022"],
+        
+        // ----------------- OPÇÕES DE TRANSPILAÇÃO (END) -----------------
     }
 }
+
+
