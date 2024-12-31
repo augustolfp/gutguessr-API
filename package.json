@@ -1,16 +1,14 @@
 {
   "name": "gutguessr-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The Backend of Gutguessr geography game",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/server.ts",
     "build": "tsc -p .",
-    "start": "node build/server.js"
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Augusto Lopes Falcão Pinheiro (augustolfp)",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
