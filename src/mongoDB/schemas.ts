@@ -1,4 +1,8 @@
-import { SinglePlayerSessionInterface, RoundInterface } from "../types";
+import {
+    SinglePlayerSessionInterface,
+    RoundInterface,
+    RankingInterface,
+} from "../types";
 import { Document, Schema } from "mongoose";
 
 export interface SinglePlayerSessionModelInterface
@@ -6,6 +10,8 @@ export interface SinglePlayerSessionModelInterface
         Document {}
 
 export interface RoundModelInterface extends RoundInterface, Document {}
+
+export interface RankingModelInterface extends RankingInterface, Document {}
 
 const RoundSchema: Schema = new Schema(
     {
@@ -27,4 +33,17 @@ export const SinglePlayerSessionSchema: Schema = new Schema(
         rounds: [RoundSchema],
     },
     { versionKey: false }
+);
+
+export const RankingSchema: Schema = new Schema(
+    {
+        username: String,
+        sessionId: String,
+        creationTimestamp: Number,
+        scores: [Number],
+        averageScore: Number,
+    },
+    {
+        versionKey: false,
+    }
 );

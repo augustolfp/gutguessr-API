@@ -45,7 +45,7 @@ export async function createRound(sessionId: string) {
 }
 
 export async function updateLastRoundScore(sessionId: string, score: number) {
-    const timeToRespond = 90 * 1000; // 90 milisseconds
+    const timeToRespond = 88 * 1000; // 88 milisseconds
 
     const session = await SinglePlayerSessionDoc.findById(sessionId);
 

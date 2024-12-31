@@ -1,4 +1,5 @@
 import * as singlePlayerSessionRepo from "../repositories/singlePlayerSessionRepo";
+import * as rankingRepo from "../repositories/rankingRepo";
 import calculateScore from "../utils/calculateScore";
 
 export async function createSinglePlayerSession(
@@ -22,5 +23,14 @@ export async function updateLastRoundScore(
     distance: number
 ) {
     const score = calculateScore(distance);
-    return await singlePlayerSessionRepo.updateLastRoundScore(sessionId, score);
+    const result = await singlePlayerSessionRepo.updateLastRoundScore(
+        sessionId,
+        score
+    );
+
+    if (result.rounds.length === result.numOfRounds) {
+        await rankingRepo.updateRanking(result);
+    }
+
+    return result;
 }
